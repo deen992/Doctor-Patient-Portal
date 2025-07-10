@@ -4,24 +4,25 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
+
     private static Connection conn;
 
     public static Connection getConn() {
-        if (conn == null) {
-            try {
-                // 1) load the driver
-                Class.forName("com.mysql.cj.jdbc.Driver");
+        try {
+            // Step 1: Load the MySQL driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
-                // 2) read connection info from env-vars
-                String url  = System.getenv("jdbc:mysql://sv32.byethost32.org:3306/malays10_hospital"+"?useSSL=false"+"&allowPublicKeyRetrieval=true"+"&serverTimezone=UTC";);
-                String user = System.getenv("malays10_admin_hospital");
-                String pass = System.getenv("G-JLIQS5hPMCzpOp");
+            // Step 2: Connect to the remote iFastNet MySQL server
+            conn = DriverManager.getConnection(
+                "jdbc:mysql://sql5.freesqldatabase.com:3306/sql5789259", // Update sqlNN
+                "sql5789259", // Replace with your cPanel-created MySQL username
+                "RKwW7AUxsf"  // Replace with your password
+            );
 
-                conn = DriverManager.getConnection(url, user, pass);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
         return conn;
     }
 }
