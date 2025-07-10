@@ -13,7 +13,7 @@ public class DBConnection {
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
                 // 2) read connection info from env-vars
-                String url  = System.getenv("jdbc:mysql://31.22.4.112:3306/malays10_hospital"+"?useSSL=false"+"&allowPublicKeyRetrieval=true"+"&serverTimezone=UTC";);
+                String url  = System.getenv("jdbc:mysql://sv32.byethost32.org:3306/malays10_hospital"+"?useSSL=false"+"&allowPublicKeyRetrieval=true"+"&serverTimezone=UTC";);
                 String user = System.getenv("malays10_admin_hospital");
                 String pass = System.getenv("G-JLIQS5hPMCzpOp");
 
