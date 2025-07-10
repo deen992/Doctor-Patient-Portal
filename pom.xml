@@ -15,6 +15,13 @@
 		</dependency>
 
 		<dependency>
+   			 <groupId>com.google.cloud.sql</groupId>
+    			<artifactId>mysql-socket-factory-connector-j-8</artifactId>
+   			 <!-- latest at time of writing is 1.13.1, but check Maven Central -->
+    			<version>1.13.1</version>
+  		</dependency>
+
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>4.0.1</version>
