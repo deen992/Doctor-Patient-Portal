@@ -14,7 +14,7 @@ public class DBConnection {
             String instanceConnName = System.getenv("myjava-465513:us-central1:myhospital");
             String dbName            = System.getenv("hospital");
             String dbUser            = System.getenv("admin");
-            String dbPass            = System.getenv("Abcd1234$");
+            String dbPass            = System.getenv("");
 
             if (instanceConnName == null || dbName == null ||
                 dbUser == null || dbPass == null) {
