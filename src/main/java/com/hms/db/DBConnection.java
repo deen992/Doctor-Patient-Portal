@@ -4,25 +4,22 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
+  private static Connection conn;
 
-    private static Connection conn;
+  public static Connection getConn() {
+    if (conn == null) {
+      try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
 
-    public static Connection getConn() {
-        try {
-            // Step 1: Load the MySQL driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+        String url  = System.getenv("jdbc:mysql://sql5.freesqldatabase.com:3306/sql5789259?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC");
+        String user = System.getenv("sql5789259");
+        String pass = System.getenv("RKwW7AUxsf");
 
-            // Step 2: Connect to the remote iFastNet MySQL server
-            conn = DriverManager.getConnection(
-                "jdbc:mysql://sql5.freesqldatabase.com:3306/sql5789259", // Update sqlNN
-                "sql5789259", // Replace with your cPanel-created MySQL username
-                "RKwW7AUxsf"  // Replace with your password
-            );
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return conn;
+        conn = DriverManager.getConnection(url, user, pass);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     }
+    return conn;
+  }
 }
