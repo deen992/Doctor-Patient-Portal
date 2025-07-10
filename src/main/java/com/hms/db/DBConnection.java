@@ -13,7 +13,7 @@ public class DBConnection {
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
                 // 2) read connection info from env-vars
-                String url  = System.getenv("jdbc:mysql://sql5.freesqldatabase.com:3306/sql5789259?useSSL=false&serverTimezone=UTC");
+                String url  = System.getenv("jdbc:mysql://sql5.freesqldatabase.com:3306/sql5789259"+"?useSSL=false"+"&allowPublicKeyRetrieval=true"+"&serverTimezone=UTC";);
                 String user = System.getenv("sql5789259");
                 String pass = System.getenv("RKwW7AUxsf");
 
