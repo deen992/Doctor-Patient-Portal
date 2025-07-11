@@ -11,11 +11,13 @@ public class DBConnection {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
+                // ✅ Get environment variables by variable name
                 String dbName = System.getenv("hospital");
                 String dbUser = System.getenv("admin");
                 String dbPass = System.getenv("");
                 String instanceConnName = System.getenv("myjava-465513:us-central1:myhospital");
 
+                // ✅ Construct JDBC URL with Cloud SQL Socket Factory
                 String jdbcUrl = String.format(
                     "jdbc:mysql:///%s?cloudSqlInstance=%s&"
                     + "socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false",
@@ -29,3 +31,4 @@ public class DBConnection {
         return conn;
     }
 }
+
