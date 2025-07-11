@@ -4,31 +4,24 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
-    private static Connection conn;
 
-    public static Connection getConn() {
-        if (conn == null) {
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-
-                // ✅ Get environment variables by variable name
-                String dbName = System.getenv("hospital");
-                String dbUser = System.getenv("admin");
-                String dbPass = System.getenv("");
-                String instanceConnName = System.getenv("myjava-465513:us-central1:myhospital");
-
-                // ✅ Construct JDBC URL with Cloud SQL Socket Factory
-                String jdbcUrl = String.format(
-                    "jdbc:mysql:///%s?cloudSqlInstance=%s&"
-                    + "socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false",
-                    dbName, instanceConnName);
-
-                conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return conn;
-    }
+	private static Connection conn;
+	
+	public static Connection getConn() {
+		
+		try {
+			
+			//step:1 for connection - load the driver class 
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			//step:2- create a connection
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital","root","");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		
+		return conn;
+	}
 }
-
